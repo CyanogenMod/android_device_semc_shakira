@@ -72,8 +72,8 @@ extern "C" {
 
 #include <msm_camera.h>
 
-#define DEFAULT_PICTURE_WIDTH  1024
-#define DEFAULT_PICTURE_HEIGHT 768
+#define DEFAULT_PICTURE_WIDTH  640
+#define DEFAULT_PICTURE_HEIGHT 480
 #define THUMBNAIL_BUFFER_SIZE (THUMBNAIL_WIDTH * THUMBNAIL_HEIGHT * 3/2)
 #define MAX_ZOOM_LEVEL 5
 #define NOT_FOUND -1
@@ -144,12 +144,13 @@ union zoomimage
  */
 
 static const camera_size_type preview_sizes[] = {
+    { 640, 480 }, // VGA
     { 480, 320 }, // HVGA
     { 384, 288 },
-    { 352, 288 }, // CIF
-    { 320, 240 }, // QVGA
-    { 240, 160 }, // SQVGA
-    { 176, 144 }, // QCIF
+//    { 352, 288 }, // CIF
+//    { 320, 240 }, // QVGA
+//    { 240, 160 }, // SQVGA
+//    { 176, 144 }, // QCIF
 };
 #define PREVIEW_SIZE_COUNT (sizeof(preview_sizes)/sizeof(camera_size_type))
 
@@ -174,12 +175,8 @@ board_property boardProperties[] = {
 //sorted on column basis
 static const camera_size_type picture_sizes[] = {
     { 2048, 1536 }, // 3MP QXGA
-    { 1600, 1200 }, // 2MP UXGA
-    { 1024, 768}, // 1MP XGA
+    { 1280, 960 }, // 2MP UXGA
     { 640, 480 }, // VGA
-    { 352, 288 }, //CIF
-    { 320, 240 }, // QVGA
-    { 176, 144 } // QCIF
 };
 static int PICTURE_SIZE_COUNT = sizeof(picture_sizes)/sizeof(camera_size_type);
 static const camera_size_type * picture_sizes_ptr;
@@ -206,10 +203,10 @@ typedef struct {
 } thumbnail_size_type;
 
 static thumbnail_size_type thumbnail_sizes[] = {
-    { 6826, 480, 288 }, //1.666667
-    { 6144, 432, 288 }, //1.5
-    { 5461, 512, 384 }, //1.333333
-    { 5006, 352, 288 }, //1.222222
+    { 6826, 480, 288 } //1.666667
+//    { 6144, 432, 288 }, //1.5
+//    { 5461, 512, 384 }, //1.333333
+//    { 5006, 352, 288 }, //1.222222
 };
 #define THUMBNAIL_SIZE_COUNT (sizeof(thumbnail_sizes)/sizeof(thumbnail_size_type))
 #define DEFAULT_THUMBNAIL_SETTING 2
@@ -256,11 +253,11 @@ static const int PICTURE_FORMAT_JPEG = 1;
 static const int PICTURE_FORMAT_RAW = 2;
 
 // from qcamera/common/camera.h
-static const str_map autoexposure[] = {
-    { CameraParameters::AUTO_EXPOSURE_FRAME_AVG,  CAMERA_AEC_FRAME_AVERAGE },
-    { CameraParameters::AUTO_EXPOSURE_CENTER_WEIGHTED, CAMERA_AEC_CENTER_WEIGHTED },
-    { CameraParameters::AUTO_EXPOSURE_SPOT_METERING, CAMERA_AEC_SPOT_METERING }
-};
+//static const str_map autoexposure[] = {
+//    { CameraParameters::AUTO_EXPOSURE_FRAME_AVG,  CAMERA_AEC_FRAME_AVERAGE },
+//    { CameraParameters::AUTO_EXPOSURE_CENTER_WEIGHTED, CAMERA_AEC_CENTER_WEIGHTED },
+//    { CameraParameters::AUTO_EXPOSURE_SPOT_METERING, CAMERA_AEC_SPOT_METERING }
+//};
 
 
 
@@ -285,7 +282,7 @@ struct SensorType {
 };
 
 static SensorType sensorTypes[] = {
-        { "3mp", 2064, 1544, false, 2048, 1536,0x000007ff },
+        { "3mp", 2048, 1536, true, 2048, 1536,0x000007ff },
         { "2mp", 3200, 1200, false, 1600, 1200,0x000007ff } };
 
 
@@ -299,7 +296,7 @@ static const str_map picture_formats[] = {
 static bool parameter_string_initialized = false;
 static String8 preview_size_values;
 static String8 picture_size_values;
-static String8 autoexposure_values;
+//static String8 autoexposure_values;
 static String8 focus_mode_values;
 static String8 picture_format_values;
 static String8 preview_frame_rate_values;
@@ -620,8 +617,8 @@ void QualcommCameraHardware::initDefaultParameters()
     // lifetime of the mediaserver process.
     if (!parameter_string_initialized) {
         findSensorType();
-        autoexposure_values = create_values_str(
-            autoexposure, sizeof(autoexposure) / sizeof(str_map));
+//        autoexposure_values = create_values_str(
+//            autoexposure, sizeof(autoexposure) / sizeof(str_map));
 
         //filter preview sizes
         filterPreviewSizes();
@@ -666,8 +663,8 @@ void QualcommCameraHardware::initDefaultParameters()
             thumbnail_sizes[DEFAULT_THUMBNAIL_SETTING].height;
     mParameters.set(CameraParameters::KEY_JPEG_THUMBNAIL_QUALITY, "90");
 
-    mParameters.set(CameraParameters::KEY_AUTO_EXPOSURE,
-                    CameraParameters::AUTO_EXPOSURE_FRAME_AVG);
+//   mParameters.set(CameraParameters::KEY_AUTO_EXPOSURE,
+//                    CameraParameters::AUTO_EXPOSURE_FRAME_AVG);
     mParameters.set(CameraParameters::KEY_FOCUS_MODE,
                     CameraParameters::FOCUS_MODE_AUTO);
 
@@ -675,7 +672,7 @@ void QualcommCameraHardware::initDefaultParameters()
                     preview_size_values.string());
     mParameters.set(CameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
                     picture_size_values.string());
-    mParameters.set(CameraParameters::KEY_SUPPORTED_AUTO_EXPOSURE, autoexposure_values);
+//    mParameters.set(CameraParameters::KEY_SUPPORTED_AUTO_EXPOSURE, autoexposure_values);
     mParameters.set(CameraParameters::KEY_SUPPORTED_FOCUS_MODES,
                     focus_mode_values);
     mParameters.set(CameraParameters::KEY_SUPPORTED_PICTURE_FORMATS,
@@ -2432,7 +2429,7 @@ status_t QualcommCameraHardware::setParameters(const CameraParameters& params)
     if ((rc = setPreviewFrameRate(params))) final_rc = rc;
     if ((rc = setPictureSize(params)))  final_rc = rc;
     if ((rc = setJpegQuality(params)))  final_rc = rc;
-    if ((rc = setAutoExposure(params))) final_rc = rc;
+//    if ((rc = setAutoExposure(params))) final_rc = rc;
     if ((rc = setGpsLocation(params)))  final_rc = rc;
     if ((rc = setRotation(params)))     final_rc = rc;
     if ((rc = setPictureFormat(params))) final_rc = rc;
@@ -3160,25 +3157,25 @@ status_t QualcommCameraHardware::setJpegQuality(const CameraParameters& params) 
 }
 
 
-status_t QualcommCameraHardware::setAutoExposure(const CameraParameters& params)
-{
-    if(!strcmp(sensorType->name, "2mp")) {
-        LOGE("Auto Exposure not supported for this sensor");
-        return NO_ERROR;
-    }
-    const char *str = params.get(CameraParameters::KEY_AUTO_EXPOSURE);
-    if (str != NULL) {
-        int32_t value = attr_lookup(autoexposure, sizeof(autoexposure) / sizeof(str_map), str);
-        if (value != NOT_FOUND) {
-            mParameters.set(CameraParameters::KEY_AUTO_EXPOSURE, str);
-            bool ret = native_set_parm(CAMERA_SET_PARM_EXPOSURE, sizeof(value),
-                                       (void *)&value);
-            return ret ? NO_ERROR : UNKNOWN_ERROR;
-        }
-    }
-    LOGE("Invalid auto exposure value: %s", (str == NULL) ? "NULL" : str);
-    return BAD_VALUE;
-}
+//status_t QualcommCameraHardware::setAutoExposure(const CameraParameters& params)
+//{
+//    if(!strcmp(sensorType->name, "2mp")) {
+//        LOGE("Auto Exposure not supported for this sensor");
+//        return NO_ERROR;
+//    }
+//    const char *str = params.get(CameraParameters::KEY_AUTO_EXPOSURE);
+//    if (str != NULL) {
+//        int32_t value = attr_lookup(autoexposure, sizeof(autoexposure) / sizeof(str_map), str);
+//        if (value != NOT_FOUND) {
+//            mParameters.set(CameraParameters::KEY_AUTO_EXPOSURE, str);
+//            bool ret = native_set_parm(CAMERA_SET_PARM_EXPOSURE, sizeof(value),
+//                                       (void *)&value);
+//            return ret ? NO_ERROR : UNKNOWN_ERROR;
+//        }
+//    }
+//    LOGE("Invalid auto exposure value: %s", (str == NULL) ? "NULL" : str);
+//    return BAD_VALUE;
+//}
 
 
 status_t QualcommCameraHardware::setBrightness(const CameraParameters& params) {

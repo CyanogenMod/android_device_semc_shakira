@@ -12,7 +12,8 @@ umount /data
 umount /cache
 umount /mnt/sdcard
 rm -r /sdcard
-rm -r /not/sdcard
+rm -r /mnt/sdcard
+rm /etc
 mkdir /sdcard
 mkdir /tmp
 mkdir /etc
@@ -31,7 +32,8 @@ umount /data
 umount /cache
 umount /mnt/sdcard
 rm -r /sdcard
-rm -r /not/sdcard
+rm -r /mnt/sdcard
+rm /etc
 mkdir /sdcard
 mkdir /tmp
 mkdir /etc
