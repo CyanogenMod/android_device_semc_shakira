@@ -14,8 +14,9 @@
      limitations under the License.
 -->
 
-<!-- Passion-specific Contacts app resources. -->
 <resources>
-    <!-- Enable the onscreen "Dial" button in the dialer. -->
-    <bool name="config_show_onscreen_dial_button">true</bool>
+
+    <integer name="max_resolution">1024</integer>
+    <integer name="max_resolution_screennail">512</integer>
+
 </resources>

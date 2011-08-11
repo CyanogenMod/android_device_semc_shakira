@@ -22,6 +22,9 @@ PRODUCT_COPY_FILES += \
 
 -include device/semc/msm7x27-common/msm7x27.mk
 
+PRODUCT_PACKAGES += \
+    lights.shakira 
+
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
 # application settings that are stored in resourced.
@@ -29,7 +32,8 @@ DEVICE_PACKAGE_OVERLAYS += device/semc/shakira/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES += \
-	device/semc/shakira/prebuilt/media_profiles.xml:system/etc/media_profiles.xml 
+	device/semc/shakira/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
+	device/semc/msm7x27-common/prebuilt/initlogo_mdpi.rle:root/initlogo.rle 
 
 # Init files
 PRODUCT_COPY_FILES += \
@@ -42,4 +46,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_LOCALES += mdpi
 
 
+#new charging animations
+PRODUCT_COPY_FILES += \
+    device/semc/shakira/prebuilt/animations/anim1.rle:system/etc/semc/chargemon/anim1.rle \
+    device/semc/shakira/prebuilt/animations/anim2.rle:system/etc/semc/chargemon/anim2.rle \
+    device/semc/shakira/prebuilt/animations/anim3.rle:system/etc/semc/chargemon/anim3.rle \
+    device/semc/shakira/prebuilt/animations/anim4.rle:system/etc/semc/chargemon/anim4.rle \
+    device/semc/shakira/prebuilt/animations/anim5.rle:system/etc/semc/chargemon/anim5.rle \
+    device/semc/shakira/prebuilt/animations/anim6.rle:system/etc/semc/chargemon/anim6.rle \
+    device/semc/shakira/prebuilt/animations/anim7.rle:system/etc/semc/chargemon/anim7.rle \
+    device/semc/shakira/prebuilt/animations/anim8.rle:system/etc/semc/chargemon/anim8.rle 
 
