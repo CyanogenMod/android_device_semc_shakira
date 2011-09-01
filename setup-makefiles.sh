@@ -113,9 +113,7 @@ vendor/__VENDOR__/__DEVICE__/proprietary/sensors.default.so:system/lib/hw/sensor
 
 ## WIFI & BT TI1271
 PRODUCT_COPY_FILES += \\
-vendor/__VENDOR__/__DEVICE__/proprietary/hciattach:system/bin/hciattach \\
-vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan.ini:system/etc/wifi/tiwlan.ini \\
-vendor/__VENDOR__/__DEVICE__/proprietary/tiwlan_firmware.bin:system/etc/wifi/tiwlan_firmware.bin
+vendor/__VENDOR__/__DEVICE__/proprietary/hciattach:system/bin/hciattach
 
 ## Adreno 200 files
 PRODUCT_COPY_FILES += \\
