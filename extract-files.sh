@@ -88,6 +88,7 @@ adb pull /system/etc/firmware/fmc_init_1273.2.bts ../../../vendor/$VENDOR/$DEVIC
 adb pull /system/etc/firmware/TIInit_7.2.31.bts ../../../vendor/$VENDOR/$DEVICE/proprietary
 
 ## WIFI & BT TI1271
+adb pull /system/bin/nvimport ../../../vendor/$VENDOR/$DEVICE/proprietary
 adb pull /system/bin/hciattach ../../../vendor/$VENDOR/$DEVICE/proprietary
 adb pull /system/etc/tiwlan.ini ../../../vendor/$VENDOR/$DEVICE/proprietary
 adb pull /system/etc/wifi/wpa_supplicant.conf ../../../vendor/$VENDOR/$DEVICE/proprietary

@@ -32,9 +32,11 @@ DEVICE_PACKAGE_OVERLAYS += device/semc/shakira/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES += \
+	device/semc/shakira/prebuilt/tiwlan.ini:system/etc/wifi/tiwlan.ini \
+	device/semc/shakira/prebuilt/tiwlan_ap.ini:system/etc/wifi/softap/tiwlan_ap.ini \
 	device/semc/shakira/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
 	device/semc/msm7x27-common/prebuilt/initlogo_mdpi.rle:root/initlogo.rle \
-    device/semc/shakira/prebuilt/AudioFilter.csv:system/etc/AudioFilter.csv
+       device/semc/shakira/prebuilt/AudioFilter.csv:system/etc/AudioFilter.csv
 
 # Init files
 PRODUCT_COPY_FILES += \
