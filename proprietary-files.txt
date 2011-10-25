@@ -1,0 +1,104 @@
+# Prebuilt kl keymaps
+/system/usr/keylayout/shakira_keypad.kl
+/system/usr/keylayout/systemconnector.kl
+/system/usr/keychars/shakira_keypad.kcm.bin
+/system/usr/keychars/systemconnector.kcm.bin
+
+## RIL related stuff 
+/system/lib/libril.so
+/system/bin/port-bridge
+/system/bin/qmuxd
+/system/lib/libauth.so
+/system/lib/libcm.so
+/system/lib/libdiag.so
+/system/lib/libdll.so
+/system/lib/libdsm.so
+/system/lib/libdss.so
+/system/lib/libgsdi_exp.so
+/system/lib/libgstk_exp.so
+/system/lib/libmmgsdilib.so
+/system/lib/libnv.so
+/system/lib/liboem_rapi.so
+/system/lib/liboncrpc.so
+/system/lib/libpbmlib.so
+/system/lib/libqmi.so
+/system/lib/libqueue.so
+/system/lib/libuim.so
+/system/lib/libril-qc-1.so
+/system/lib/libwms.so
+/system/lib/libwmsts.so
+
+## Camera proprietaries
+/system/lib/liboemcamera.so
+/system/lib/libmmjpeg.so
+/system/lib/libmmipl.so 
+/system/lib/libcamera.so
+/system/lib/libopencore_common.so
+
+## OMX proprietaries
+/system/lib/libmm-adspsvc.so
+/system/lib/libOmxAacDec.so
+/system/lib/libOmxAmrRtpDec.so
+/system/lib/libOmxH264Dec.so
+/system/lib/libOmxQcelpDec.so
+/system/lib/libOmxAacEnc.so
+/system/lib/libOmxAmrwbDec.so
+/system/lib/libOmxMp3Dec.so
+/system/lib/libOmxVidEnc.so
+/system/lib/libOmxAmrDec.so
+/system/lib/libOmxEvrcDec.so
+/system/lib/libOmxMpeg4Dec.so
+/system/lib/libOmxWmaDec.so
+/system/lib/libOmxAmrEnc.so
+/system/lib/libOmxEvrcEnc.so
+/system/lib/libOmxQcelp13Enc.so
+/system/lib/libOmxWmvDec.so
+
+## FIRMWARE
+/system/etc/firmware/yamato_pfp.fw
+/system/etc/firmware/yamato_pm4.fw
+/system/etc/firmware/fm_rx_init_1273.1.bts
+/system/etc/firmware/fm_rx_init_1273.2.bts
+/system/etc/firmware/fm_tx_init_1273.1.bts
+/system/etc/firmware/fm_tx_init_1273.2.bts
+/system/etc/firmware/fmc_init_1273.1.bts
+/system/etc/firmware/fmc_init_1273.2.bts
+/system/etc/firmware/TIInit_7.2.31.bts
+
+## WIFI & BT TI1271
+/system/bin/nvimport
+/system/bin/hciattach
+/system/etc/tiwlan.ini
+/system/etc/wifi/wpa_supplicant.conf
+/system/etc/tiwlan_firmware.bin
+
+## Adreno 200 files
+/system/lib/libgsl.so/libgsl.so
+/system/lib/egl/libGLESv1_CM_adreno200.so
+/system/lib/egl/libq3dtools_adreno200.so
+/system/lib/egl/libEGL_adreno200.so
+/system/lib/egl/libGLESv2_adreno200.so
+
+## Other libraries and proprietary binaries
+/system/lib/libaudioeq.so
+/system/etc/sensors.conf
+/system/bin/akmd2
+
+#offline charger
+/system/bin/chargemon
+/system/bin/semc_chargalg
+/system/bin/updatemiscta
+/system/lib/libmiscta.so
+
+#hw
+/system/lib/hw/copybit.msm7k.so
+/system/lib/hw/sensors.default.so
+/system/lib/hw/hal_seport.default.so
+/system/lib/libsystemconnector/libuinputdevicejni.so
+/system/lib/libsystemconnector_hal_jni.so
+
+#ANT*
+/system/app/AntHalService.apk
+/system/etc/permissions/com.dsi.ant.antradio_library.xml
+/system/framework/com.dsi.ant.antradio_library.jar
+/system/lib/libanthal.so
