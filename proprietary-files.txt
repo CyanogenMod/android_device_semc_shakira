@@ -66,6 +66,10 @@ etc/firmware/TIInit_7.2.31.bts
 ## WIFI & BT TI1271
 bin/nvimport
 bin/hciattach
+etc/wifi/tiwlan.ini
+etc/wifi/tiwlan_firmware.bin
+etc/wifi/softap/tiwlan_ap.ini
+etc/wifi/softap/tiwlan_firmware_ap.bin
 
 ## Adreno 200 files
 lib/libgsl.so
