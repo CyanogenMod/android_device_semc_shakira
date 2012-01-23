@@ -65,7 +65,6 @@ etc/firmware/TIInit_7.2.31.bts
 
 ## WIFI & BT TI1271
 bin/nvimport
-bin/hciattach
 etc/wifi/tiwlan.ini
 etc/wifi/tiwlan_firmware.bin
 etc/wifi/softap/tiwlan_ap.ini

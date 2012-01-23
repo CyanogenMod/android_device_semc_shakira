@@ -7,23 +7,14 @@ $(call inherit-product-if-exists, vendor/semc/shakira/shakira-vendor.mk)
 
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := E15i
+PRODUCT_NAME := Xperia X8
 PRODUCT_DEVICE := shakira
 PRODUCT_MODEL := E15i
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/semc/shakira/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
 
 -include device/semc/msm7x27-common/msm7x27.mk
 
 PRODUCT_PACKAGES += \
-    lights.shakira 
+    lights.delta
 
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
@@ -32,10 +23,10 @@ DEVICE_PACKAGE_OVERLAYS += device/semc/shakira/overlay
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES += \
-	device/semc/shakira/prebuilt/tiwlan.ini:system/etc/wifi/tiwlan.ini \
-	device/semc/shakira/prebuilt/tiwlan_ap.ini:system/etc/wifi/softap/tiwlan_ap.ini \
-	device/semc/msm7x27-common/prebuilt/initlogo_mdpi.rle:root/initlogo.rle \
-       device/semc/shakira/prebuilt/AudioFilter.csv:system/etc/AudioFilter.csv
+    device/semc/shakira/prebuilt/tiwlan.ini:system/etc/wifi/tiwlan.ini \
+    device/semc/shakira/prebuilt/tiwlan_ap.ini:system/etc/wifi/softap/tiwlan_ap.ini \
+    device/semc/msm7x27-common/prebuilt/initlogo_mdpi.rle:root/initlogo.rle \
+    device/semc/shakira/prebuilt/AudioFilter.csv:system/etc/AudioFilter.csv
 
 # Init files
 PRODUCT_COPY_FILES += \
