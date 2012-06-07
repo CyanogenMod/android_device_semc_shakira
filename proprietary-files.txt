@@ -95,8 +95,12 @@ lib/hw/hal_seport.default.so
 lib/libsystemconnector/libuinputdevicejni.so
 lib/libsystemconnector_hal_jni.so
 
-#ANT*
-app/AntHalService.apk
-etc/permissions/com.dsi.ant.antradio_library.xml
-framework/com.dsi.ant.antradio_library.jar
+#ANT+
 lib/libanthal.so
+etc/permissions/com.dsi.ant.antradio_library.xml
+etc/permissions/com.sonyericsson.suquashi.xml
+app/antstatenotifer.apk
+app/AntHalService.apk
+app/antradioservice.apk
+framework/com.dsi.ant.antradio_library.jar
+framework/com.sonyericsson.suquashi.jar
